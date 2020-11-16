@@ -15,6 +15,9 @@ Produse similare:
 ![](Images/MockupProject.png)
 
 ![](Images/MockupSetiings.png)
+
+![](Images/MockupReview.png)
+
 ## Rest API
 
 ### Modul utilizator:
