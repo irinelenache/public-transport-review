@@ -12,8 +12,9 @@ Produse similare:
 3. *Moovit* - you can use it to find train schedules, bus schedules, subway schedules, trams, and more. You can then use that info to get to your destination. It even has unique stuff like bike sharing for those days where you want to ride
 
 ## Interfete aplicatie
-**_imagini_**
+![](Images/MockupProject.png)
 
+![](Images/MockupSetiings.png)
 ## Rest API
 
 ### Modul utilizator:
