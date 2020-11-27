@@ -1,0 +1,14 @@
+{
+  "name": "public-transport-review",
+  "version": "1.0.0",
+  "description": "Web application that helps people share their experiences using public transportation",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Team - Cei 4",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
