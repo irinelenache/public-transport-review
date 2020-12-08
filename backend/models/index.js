@@ -38,8 +38,8 @@ sequelize
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;
 
-db.Students = require('./Users')(sequelize, Sequelize);
-db.StudentAssignments = require('./Reviews')(sequelize, Sequelize);
+db.Users = require('./Users')(sequelize, Sequelize);
+db.Reviews = require('./Reviews')(sequelize, Sequelize);
 
 
 db.Users.hasMany(db.Reviews, {foreignKey: "idUser"})
