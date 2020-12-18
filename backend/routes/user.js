@@ -4,8 +4,8 @@ const router = express.Router()
 
 const userController = require('../controllers/UserController.js');
 
-router.post('/user/create', userController.create)
+router.post('/create', userController.create)
 
-router.put('/user/resetPass', userController.resetPass)
+router.put('/resetPass', userController.resetPass)
 
 module.exports = router;

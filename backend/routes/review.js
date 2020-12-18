@@ -4,14 +4,14 @@ const router = express.Router()
 
 const reviewController = require('../controllers/ReviewController.js');
 
-router.post('/review/create', reviewController.create)
+router.post('/create/:id', reviewController.create)
 
-router.put('/review/modify/{idUser}/{idReview}', reviewController.modify)
+router.put('/modify/{idUser}/{idReview}', reviewController.modify)
 
-router.get('/review/listAll/{idUser}', reviewController.listAllByIdUser)
+router.get('/listAll/{idUser}', reviewController.listAllByIdUser)
 
-router.delete('/review/{idReview}', reviewController.findOne)
+router.delete('/{idReview}', reviewController.findOne)
 
-router.get('/list?search={searchParam}', reviewController.findAll)
+router.get('/list', reviewController.findAll)
 
 module.exports = router;
