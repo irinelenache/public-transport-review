@@ -1,6 +1,6 @@
 {
-    "database": "students",
+    "database": "transport-review",
     "username": "root",
-    "password": "root",
+    "password": "",
     "host": "localhost"
 }

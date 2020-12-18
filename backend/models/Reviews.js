@@ -1,13 +1,17 @@
 module.exports = function (sequelize, DataTypes) {
     var Reviews = sequelize.define("reviews", {
-        idReview: DataTypes.STRING,
+        idReview:{
+            type: DataTypes.STRING,
+            primaryKey: true,
+            defaultValue: DataTypes.UUIDV4
+        },
         idUser: DataTypes.STRING,
         leavingPoint: DataTypes.STRING,
         arrivingPoint: DataTypes.STRING,
         transport: DataTypes.STRING, //something like 133 autobuz, 41 tramvai
         leavingHour: DataTypes.STRING,
         length: DataTypes.INTEGER,
-        levelOfCrowd: DataTypes.ENUM('Gol', 'Putini oameni', 'Mediu', 'Multi oameni', 'Plin'),
+        levelOfCrowd: DataTypes.INTEGER,
         notes: DataTypes.STRING,
         satisfaction: DataTypes.INTEGER
     });

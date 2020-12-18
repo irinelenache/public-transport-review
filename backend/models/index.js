@@ -43,5 +43,6 @@ db.Reviews = require('./Reviews')(sequelize, Sequelize);
 
 
 db.Users.hasMany(db.Reviews, {foreignKey: "idUser"})
+db.Reviews.belongsTo(db.Users)
 
 module.exports = db;
