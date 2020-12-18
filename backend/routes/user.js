@@ -6,6 +6,6 @@ const userController = require('../controllers/UserController.js');
 
 router.post('/create', userController.create)
 
-router.put('/resetPass', userController.resetPass)
+router.put('/resetPass/:id', userController.resetPass)
 
 module.exports = router;

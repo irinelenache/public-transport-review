@@ -1,13 +1,13 @@
 var db = require('../models/index');
 
-module.exports.create = async (req, res) =>{
-    try{
+module.exports.create = async (req, res) => {
+    try {
         let user = await db.Users.findByPk(req.params.id)
         let review = await db.Reviews.create({
             idUser: user.idUser,
             leavingPoint: req.body.leavingPoint,
             arrivingPoint: req.body.arrivingPoint,
-            transport: req.body.transport, 
+            transport: req.body.transport,
             leavingHour: req.body.leavingHour,
             length: req.body.length,
             levelOfCrowd: req.body.levelOfCrowd,
@@ -15,18 +15,53 @@ module.exports.create = async (req, res) =>{
             satisfaction: req.body.satisfaction
         })
         res.status(201).send(review)
-    } catch(e){
+    } catch (e) {
         console.log(e)
         res.status(500).send('Internal server error')
     }
 }
 
-module.exports.modify = (req, res) => {
-    
+module.exports.modify = async (req, res) => {
+    let user = await db.Users.findByPk(req.params.idUser)
+    let review = await db.Reviews.findByPk(req.params.idReview)
+
+    await db.Reviews.update({
+            leavingPoint: req.body.leavingPoint,
+            arrivingPoint: req.body.arrivingPoint,
+            transport: req.body.transport,
+            leavingHour: req.body.leavingHour,
+            length: req.body.length,
+            levelOfCrowd: req.body.levelOfCrowd,
+            notes: req.body.notes,
+            satisfaction: req.body.satisfaction
+        }, {
+            where: {
+                idUser: user.idUser,
+                idReview: review.idReview
+            }
+        })
+        .then(res.status(200).send('Review modified'))
+        .catch(e => res.status(500).send('Internal server error'))
 }
 
-module.exports.listAllByIdUser = (req, res) => {
-    
+module.exports.listAllByIdUser = async (req, res) => {
+    let user = await db.Users.findByPk(req.params.idUser)
+    let reviewList = []
+    await db.Reviews.findAll({
+        where: {idUser: user.idUser}
+      }).then(
+           (results) => {
+               res.status(200).send({
+                   status: "Reviews found",
+                   results: results
+               });
+           }
+       ).catch((e) => {
+           console.log(e)
+           res.status(500).send({
+               status: "Internal server error"
+           })
+       })
 }
 
 module.exports.findOne = (req, res) => {
@@ -40,7 +75,7 @@ module.exports.findAll = (req, res) => {
                 results: results
             });
         }
-    ).catch((e)=>{
+    ).catch((e) => {
         res.status(500).send({
             status: "error"
         })
