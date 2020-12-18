@@ -1,17 +1,18 @@
 {
-  "name": "public-transport-review",
+  "name": "backend",
   "version": "1.0.0",
-  "description": "Web application that helps people share their experiences using public transportation",
+  "description": "BusReviews",
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "Team - Cei 4",
+  "author": "CEI 4",
   "license": "ISC",
   "dependencies": {
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
     "express": "^4.17.1",
     "mysql2": "^2.2.5",
-    "nodemon": "^2.0.6",
     "sequelize": "^6.3.5"
   }
 }
