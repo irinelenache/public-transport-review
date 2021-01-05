@@ -14,6 +14,25 @@ module.exports.create = async (req, res) => {
     }
 }
 
+module.exports.login = async (req, res) => {
+    
+        let user = await db.Users.findOne({
+            where: {
+                name: req.body.name
+            }
+        })
+        if (user.password !== req.body.password){
+            return res.status(400).send('Wrong password')
+        }
+        else{
+            //aici trebuie ceva cu token ca sa fie userul logat, gen are drepturi sa faca chestii
+            // .then(res.status(200).send('Logat cu succes'))
+            // .catch(res.status(500).send('Server error'))
+        }
+        
+        
+}
+
 module.exports.resetPass = async (req, res) => {
     let user = await db.Users.findByPk(req.params.id)
 

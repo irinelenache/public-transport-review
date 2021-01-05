@@ -48,24 +48,45 @@ module.exports.listAllByIdUser = async (req, res) => {
     let user = await db.Users.findByPk(req.params.idUser)
     let reviewList = []
     await db.Reviews.findAll({
-        where: {idUser: user.idUser}
-      }).then(
-           (results) => {
-               res.status(200).send({
-                   status: "Reviews found",
-                   results: results
-               });
-           }
-       ).catch((e) => {
-           console.log(e)
-           res.status(500).send({
-               status: "Internal server error"
-           })
-       })
+        where: {
+            idUser: user.idUser
+        }
+    }).then(
+        (results) => {
+            res.status(200).send({
+                status: "Reviews found",
+                results: results
+            });
+        }
+    ).catch((e) => {
+        console.log(e)
+        res.status(500).send({
+            status: "Internal server error"
+        })
+    })
 }
 
-module.exports.findOne = (req, res) => {
-
+//Userul poate alege niste parametri, daca nu vrea sa ii foloseasca pe toti lasa loc liber si se cauta doar dupa unul/doi din ei
+module.exports.listAllByParams = async (req, res) => {
+    await db.Reviews.findAll({
+        where: {
+            leavingPoint: req.body.leavingPoint,
+            arrivingPoint: req.body.arrivingPoint,
+            transport: req.body.transport
+        }
+    }).then(
+        (results) => {
+        res.status(200).send({
+            status: "Reviews found",
+            results: results
+        })
+    }
+    ).catch((e) => {
+        console.log(e)
+        res.status(500).send({
+            status: "Internal server error"
+        })
+    })
 }
 
 module.exports.findAll = (req, res) => {
@@ -81,4 +102,14 @@ module.exports.findAll = (req, res) => {
         })
         console.log(e)
     })
+}
+
+module.exports.deleteReview = async (req, res) => {
+    await db.Reviews.destroy({
+        where: {
+            id: req.params.id
+        }
+    }).then(res.status(201).send({
+        message: "Review deleted"
+    }))
 }
