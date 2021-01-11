@@ -107,7 +107,7 @@ module.exports.findAll = (req, res) => {
 module.exports.deleteReview = async (req, res) => {
     await db.Reviews.destroy({
         where: {
-            id: req.params.id
+            idReview: req.params.idReview
         }
     }).then(res.status(201).send({
         message: "Review deleted"

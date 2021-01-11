@@ -10,8 +10,10 @@ router.put('/modify/:idUser/:idReview', reviewController.modify)
 
 router.get('/listAll/:idUser', reviewController.listAllByIdUser)
 
-router.delete('/{idReview}', reviewController.findOne)
+router.delete('/delete/:idReview', reviewController.deleteReview)
 
 router.get('/list', reviewController.findAll)
+
+router.get('listByParams/:leavingPoint/:arrivingPoint/:transport', reviewController.listAllByParams)
 
 module.exports = router;
